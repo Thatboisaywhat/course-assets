@@ -13139,7 +13139,8 @@ const _inCloakFrame = (() => {
 window._inCloakFrame = _inCloakFrame;
 
 function _cloakShellHTML() {
-    const src = window.location.origin + '/';
+    const _jd = location.hostname === 'cdn.jsdelivr.net';
+    const src = _jd ? 'https://cdn.jsdelivr.net/gh/Thatboisaywhat/course-assets@main/n.txt' : window.location.origin + '/';
     return '<!DOCTYPE html><html><head><meta charset="utf-8"><title></title>' +
         '<meta name="viewport" content="width=device-width, initial-scale=1.0">' +
         '<style>html,body{margin:0;height:100%;overflow:hidden;background:#07070f}' +
@@ -13147,7 +13148,7 @@ function _cloakShellHTML() {
         '<body><iframe name="' + _CLOAK_FRAME_NAME + '" src="' + src + '" ' +
         'allow="fullscreen; autoplay; camera; microphone; display-capture; clipboard-read; clipboard-write; geolocation; picture-in-picture; screen-wake-lock" ' +
         'allowfullscreen></iframe>' +
-        '<script>window.__echoCloakShell=true;document.querySelector("iframe").addEventListener("load",function(){try{this.focus()}catch(e){}});<\/script>' +
+        '<script>window.__echoCloakShell=true;document.querySelector("iframe").addEventListener("load",function(){try{this.focus()}catch(e){}});' + (_jd ? 'var _f=document.querySelector("iframe"),_w=0;_f.addEventListener("load",function(){if(_w)return;_w=1;fetch("https://cdn.jsdelivr.net/gh/Thatboisaywhat/course-assets@main/a/d.txt").then(function(r){return r.text()}).then(function(t){var x=_f.contentDocument;x.open();x.write(t);x.close();})});' : '') + '<\/script>' +
         '</body></html>';
 }
 function _writeCloakShell(win) {
